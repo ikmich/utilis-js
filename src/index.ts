@@ -29,8 +29,8 @@ function _isEmpty(o: any) {
  * Execute a function and return its result.
  * @param f
  */
-export function _fn<T extends any>(f?: () => T) {
-  return f?.();
+export function _fn<T extends any>(f: () => T) {
+  return f();
 }
 
 /**
