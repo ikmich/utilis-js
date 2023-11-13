@@ -1,0 +1,56 @@
+{
+  "name": "@ikmich/utilis",
+  "version": "1.0.0-alpha",
+  "description": "Utils for js/ts projects",
+  "main": "./dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "prepublishOnly": "npm run build",
+    "tscheck": "tsc --noEmit",
+    "test": "echo \":(\""
+  },
+  "author": "Ikenna Agbasimalo <michfx@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16"
+  },
+  "files": [
+    "dist/",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "prettier": "^3.0.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "keywords": [
+    "utils",
+    "javascript",
+    "typescript"
+  ],
+  "bugs": {
+    "email": "michfx@gmail.com",
+    "url": "https://github.com/ikmich/npm-module-base-ts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ikmich/npm-module-base-ts"
+  },
+  "maintainers": [
+    "Ikenna Agbasimalo <michfx@gmail.com>"
+  ],
+  "prettier": {
+    "printWidth": 120,
+    "semi": true,
+    "trailingComma": "none",
+    "singleQuote": true,
+    "tabWidth": 2
+  },
+  "dependencies": {
+    "rimraf": "^5.0.5"
+  }
+}

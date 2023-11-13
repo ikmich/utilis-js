@@ -1,0 +1,11 @@
+node_modules/
+lib/
+dist/
+.vscode
+.idea/
+build/
+coverage/
+
+packlib-config.js
+packlib-config.cjs
+packlib--@ikmich/
