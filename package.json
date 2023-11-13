@@ -1,6 +1,6 @@
 {
   "name": "@ikmich/utilis",
-  "version": "1.0.2-alpha",
+  "version": "1.0.21-alpha",
   "description": "Utils for js/ts projects",
   "main": "./dist/index.js",
   "type": "module",
@@ -34,11 +34,11 @@
   ],
   "bugs": {
     "email": "michfx@gmail.com",
-    "url": "https://github.com/ikmich/npm-module-base-ts/issues"
+    "url": "https://github.com/ikmich/utilis-js/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ikmich/npm-module-base-ts"
+    "url": "https://github.com/ikmich/utilis-js"
   },
   "maintainers": [
     "Ikenna Agbasimalo <michfx@gmail.com>"
