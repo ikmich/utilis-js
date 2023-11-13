@@ -1,5 +1,6 @@
 export const obj_ = {
-  isEmpty(o: object) {
+  isEmpty(o: object | undefined) {
+    if (typeof o == 'undefined') return true;
     return Object.keys(o).length === 0;
   },
 

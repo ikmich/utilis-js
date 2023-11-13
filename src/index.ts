@@ -4,8 +4,12 @@ export * from './object.js';
 export * from './queue.js';
 export * from './string.js';
 export * from './shell.js';
+export * from './env.js';
+export * from './path.js';
 
-function _isEmpty(o: any) {
+export function _isEmpty(o: any | undefined) {
+  if (!o) return true;
+
   if (o.constructor === Object) {
     return Object.keys(o).length === 0;
   }
@@ -67,18 +71,22 @@ export function _fromJson<T extends unknown>(json: string): T {
   return JSON.parse(json) as T;
 }
 
-export function _isTrueLike(val: string | number | boolean) {
+export function _isTrueLike(val: string | number | boolean): boolean {
   if (typeof val == 'string') {
     return ['true', 'on', '1'].includes(val.toLowerCase());
   }
   return [1, true].includes(val);
 }
 
-export function _isFalseLike(val: string | number) {
+export function _isFalseLike(val: string | number | boolean): boolean {
   if (typeof val == 'string') {
     return ['false', 'off', '0'].includes(val.toLowerCase());
   }
   return [0, false].includes(val);
+}
+
+export function _isBooleanLike(val: string | number | boolean): boolean {
+  return _isTrueLike(val) || _isFalseLike(val);
 }
 
 export function _generateUniqueNumbers(size: number): Set<number> {
