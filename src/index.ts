@@ -6,6 +6,7 @@ export * from './string.js';
 export * from './shell.js';
 export * from './env.js';
 export * from './path.js';
+export * from './benchmark.js';
 
 export function _isEmpty(o: any | undefined) {
   if (!o) return true;

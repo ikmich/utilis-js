@@ -1,6 +1,6 @@
 {
   "name": "@ikmich/utilis",
-  "version": "1.0.22-alpha",
+  "version": "1.0.23-alpha",
   "description": "Utils for js/ts projects",
   "main": "./dist/index.js",
   "type": "module",
