@@ -1,6 +1,6 @@
 {
   "name": "@ikmich/utilis",
-  "version": "1.0.21-alpha",
+  "version": "1.0.22-alpha",
   "description": "Utils for js/ts projects",
   "main": "./dist/index.js",
   "type": "module",
@@ -21,10 +21,14 @@
     "package.json",
     "README.md"
   ],
+  "dependencies": {
+    "rimraf": "^5.0.5"
+  },
   "devDependencies": {
     "@types/node": "^20.9.0",
     "prettier": "^3.0.3",
     "ts-node": "^10.9.1",
+    "tsx": "^4.1.2",
     "typescript": "^5.2.2"
   },
   "keywords": [
@@ -49,8 +53,5 @@
     "trailingComma": "none",
     "singleQuote": true,
     "tabWidth": 2
-  },
-  "dependencies": {
-    "rimraf": "^5.0.5"
   }
 }

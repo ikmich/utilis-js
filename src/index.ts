@@ -64,6 +64,7 @@ export function _isUndefined(ob: any): boolean {
 }
 
 export function _toJson(obj: Record<any, unknown> | Array<unknown>, pretty = false) {
+  // return inspect(obj, false, 16, false);
   return JSON.stringify(obj, null, pretty ? 2 : 0);
 }
 
