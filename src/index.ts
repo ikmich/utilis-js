@@ -41,10 +41,15 @@ export function _fn<T extends any>(f: () => T) {
 /**
  * Pauses execution for a period.
  * @param ms
+ * @param msg Optional message to display while waiting.
  */
-export async function _delay(ms: number) {
-  if (ms <= 0) return;
-  await new Promise((resolve) => {
+export async function _delay(ms: number, msg?: string) {
+  if (ms <= 0) return Promise.resolve();
+
+  return new Promise((resolve) => {
+    if (msg) {
+      console.log(msg);
+    }
     setTimeout(() => {
       resolve(undefined);
     }, ms);

@@ -1,28 +1,36 @@
-import { exec, ExecException, spawn, SpawnOptionsWithoutStdio } from 'child_process';
+import { exec, ExecException, ExecOptions, spawn, SpawnOptionsWithoutStdio } from 'child_process';
 
 export type ShellProcessCallbacks = {
-  onStdOut: (chunk: Buffer) => void;
-  onStdErr: (err: Buffer) => void;
+  onStdout: (chunk: Buffer) => void;
+  onStderr: (err: Buffer) => void;
   onClose: (code: number, signal: NodeJS.Signals) => void;
   onError: (err: Error) => void;
 }
 
 export type ShellExecOptions = {} & SpawnOptionsWithoutStdio;
 
+export type ExecOutput = {
+  stdout: string;
+  stderr: string;
+}
+
 export const shell_ = {
-  exec: (command: string) => {
-    return new Promise((resolve, reject) => {
-      exec(command, (error: ExecException | null, stdout: string, stderr: string) => {
+  exec: (command: string, opts: ExecOptions = {}) => {
+    return new Promise<ExecOutput>((resolve, reject) => {
+      exec(command, opts, (error: ExecException | null, stdout: string, stderr: string) => {
         if (error) {
-          reject(error);
-          return;
+          throw error;
         }
 
-        if (stderr) {
-          reject(stderr);
-        }
+        const out: ExecOutput = {
+          stdout: '',
+          stderr: ''
+        };
 
-        resolve(stdout);
+        out.stderr = stderr;
+        out.stdout = stdout;
+        
+        resolve(out);
       });
     });
   },
@@ -42,8 +50,8 @@ export const shell_ = {
 
     let childProcess = spawn(main, args, opts);
     if (callbacks) {
-      childProcess.stdout.on('data', callbacks?.onStdOut);
-      childProcess.stderr.on('data', callbacks?.onStdErr);
+      childProcess.stdout.on('data', callbacks?.onStdout);
+      childProcess.stderr.on('data', callbacks?.onStderr);
       childProcess.on('close', callbacks?.onClose);
       childProcess.on('error', callbacks?.onError);
     }
