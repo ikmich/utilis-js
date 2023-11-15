@@ -1,3 +1,5 @@
+import { inspect } from 'util';
+
 export * from './number.js';
 export * from './array.js';
 export * from './object.js';
@@ -72,6 +74,12 @@ export function _isUndefined(ob: any): boolean {
 export function _toJson(obj: Record<any, unknown> | Array<unknown>, pretty = false) {
   // return inspect(obj, false, 16, false);
   return JSON.stringify(obj, null, pretty ? 2 : 0);
+}
+
+export type Jsonable = Record<any, unknown> | Array<unknown> | object;
+
+export function _printObj(obj: Jsonable, color: boolean = false): string {
+  return inspect(obj, false, 64, color);
 }
 
 export function _fromJson<T extends unknown>(json: string): T {
